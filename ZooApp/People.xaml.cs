@@ -16,14 +16,18 @@ using System.Windows.Shapes;
 namespace ZooApp
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for People.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class People : Page
     {
-        public MainWindow()
+        public People()
         {
             InitializeComponent();
-            MainFrame.Content = new Login();
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
 }

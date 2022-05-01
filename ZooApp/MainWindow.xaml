@@ -5,11 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZooApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBox x:Name="LoginInput" HorizontalAlignment="Left" Margin="255,105,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="PassInput" HorizontalAlignment="Left" Margin="255,161,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Left" Margin="255,217,0,0" VerticalAlignment="Top" Width="120" Height="30" Click="LoginButton_Click"/>
-
-    </Grid>
+        Title="Login" Height="450" Width="800" ResizeMode="NoResize">
+    <Frame Name="MainFrame" Background="White" NavigationUIVisibility="Hidden"/>
 </Window>
