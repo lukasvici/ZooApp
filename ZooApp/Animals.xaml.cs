@@ -23,11 +23,54 @@ namespace ZooApp
         public Animals()
         {
             InitializeComponent();
+            DGAnimals.ItemsSource = ZooDBEntities.GetContext().Animal.ToList();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddEditAnimals((sender as Image).DataContext as Animal));
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddEditAnimals(null));
+        }
+
+        private void DGAnimals_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+        {
+
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if(Visibility == Visibility.Visible)
+            {
+                ZooDBEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                DGAnimals.ItemsSource = ZooDBEntities.GetContext().Animal.ToList();
+            }
+        }
+
+        private void delBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var AnimalsListToRemove = DGAnimals.SelectedItems.Cast<Animal>().ToList();
+            if(MessageBox.Show("Вы точно хотите удалить выделенные строчки?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    ZooDBEntities.GetContext().Animal.RemoveRange(AnimalsListToRemove);
+                    ZooDBEntities.GetContext().SaveChanges();
+                    DGAnimals.ItemsSource = ZooDBEntities.GetContext().Animal.ToList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message.ToString());
+                }
+            }
         }
     }
 }

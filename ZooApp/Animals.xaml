@@ -6,11 +6,46 @@
       xmlns:local="clr-namespace:ZooApp"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Animals">
+      Title="Animals" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid Background="White">
-        <Label Content="Animals" HorizontalAlignment="Left" Margin="474,211,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="Back" Content="Назад" HorizontalAlignment="Left" Margin="739,27,0,0" VerticalAlignment="Top" Click="Back_Click" Width="40"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="251*"/>
+            <ColumnDefinition Width="313*"/>
+            <ColumnDefinition Width="236*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="373*"/>
+            <RowDefinition Height="77*"/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="Back" Content="Назад" Margin="0,32,10,0" VerticalAlignment="Top" Click="Back_Click" HorizontalAlignment="Right" Width="62" Height="20" Grid.Column="2"/>
+        <DataGrid ItemsSource="{Binding}" Name="DGAnimals" IsReadOnly="True" AutoGenerateColumns="False" Background="White" Margin="0,72,0,0" Grid.ColumnSpan="3">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Кличка" Binding="{Binding Name}" Width="150" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding birthday}" Width="*" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTextColumn Header="Пол" Binding="{Binding sex}" Width="95" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTextColumn Header="Вид" Binding="{Binding kind}" Width="95" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTextColumn Header="Порода" Binding="{Binding breed}" Width="100" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="фото" Width="*" IsReadOnly="True" CanUserResize="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding image}" Height="100px" Width="100px"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="фото" Width="45" IsReadOnly="True" CanUserResize="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image MouseDown="btnEdit_Click" Height="36" Width="36" Source="/pencil.png"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="AddBtn" Grid.Row="1"  Content="Добавить" Click="AddBtn_Click" HorizontalAlignment="Center" Grid.Column="2"></Button>
+        <Button x:Name="delBtn" HorizontalAlignment="Center" Grid.Row="1"  Content="Удалить" Grid.Column="0" Click="delBtn_Click"></Button>
 
     </Grid>
 </Page>

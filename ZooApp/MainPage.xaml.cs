@@ -19,7 +19,6 @@ namespace ZooApp
     public partial class MainPage : Page
     {
         string[] PermissionPages = { "Животные", "Расписание", "Сотрудники" };
-        string[] ButtonsNavigate = { "", "WorkTable.xaml", "new People()" };
         public MainPage(int permission = 1)
         {
             InitializeComponent();
