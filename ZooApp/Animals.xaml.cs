@@ -1,23 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace ZooApp
 {
-    /// <summary>
-    /// Interaction logic for Animals.xaml
-    /// </summary>
     public partial class Animals : Page
     {
         public Animals()
@@ -33,7 +24,8 @@ namespace ZooApp
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddEditAnimals((sender as Image).DataContext as Animal));
+            
+            NavigationService.Navigate(new AddEditAnimals(DGAnimals.SelectedItem as Animal));
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -71,6 +63,42 @@ namespace ZooApp
                     MessageBox.Show(ex.Message.ToString());
                 }
             }
+        }
+
+        private void Export_Word(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var animalset = ((DGAnimals.SelectedItem as Animal));
+            var WordApp = new Word.Application();
+            Word.Document document = WordApp.Documents.Add();
+            Word.Paragraph paragraph = document.Paragraphs.Add();
+            Word.Shape shape;
+
+            Word.Range userrange = paragraph.Range;
+            userrange.Text = "Кличка: " + animalset.Name + "\n";
+            userrange.Text += "Дата рождения: " + animalset.birthday + "\n";
+            userrange.Text += "Пол: " + animalset.sex + "\n";
+            userrange.Text += "Вид: " + animalset.kind + "\n";
+            userrange.Text += "Порода: " + animalset.breed + "\n";
+            
+            WordApp.Visible = true;
+
+        }
+        private static BitmapImage LoadImage(byte[] imageData)
+        {
+            if (imageData == null || imageData.Length == 0) return null;
+            var image = new BitmapImage();
+            using (var mem = new MemoryStream(imageData))
+            {
+                mem.Position = 0;
+                image.BeginInit();
+                image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.UriSource = null;
+                image.StreamSource = mem;
+                image.EndInit();
+            }
+            image.Freeze();
+            return image;
         }
     }
 }

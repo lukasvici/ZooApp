@@ -11,16 +11,19 @@
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="251*"/>
-            <ColumnDefinition Width="313*"/>
-            <ColumnDefinition Width="236*"/>
+            <ColumnDefinition Width="309*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="60*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="373*"/>
-            <RowDefinition Height="77*"/>
+            <RowDefinition Height="197*"/>
+            <RowDefinition Height="28*"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="Back" Content="Назад" Margin="0,32,10,0" VerticalAlignment="Top" Click="Back_Click" HorizontalAlignment="Right" Width="62" Height="20" Grid.Column="2"/>
-        <DataGrid ItemsSource="{Binding}" Name="DGAnimals" IsReadOnly="True" AutoGenerateColumns="False" Background="White" Margin="0,72,0,0" Grid.ColumnSpan="3">
+        <Button x:Name="Back" Content="Назад" Margin="0,10,179,0" VerticalAlignment="Top" Click="Back_Click" HorizontalAlignment="Right" Width="62" Height="20"/>
+        <DataGrid SelectionMode="Single" ItemsSource="{Binding}" Name="DGAnimals" IsReadOnly="True" AutoGenerateColumns="False" Background="White" Margin="0,35,0,0" Grid.ColumnSpan="6">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Кличка" Binding="{Binding Name}" Width="150" CanUserResize="False"></DataGridTextColumn>
                 <DataGridTextColumn Header="Дата рождения" Binding="{Binding birthday}" Width="*" CanUserResize="False"></DataGridTextColumn>
@@ -34,18 +37,14 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="фото" Width="45" IsReadOnly="True" CanUserResize="False">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Image MouseDown="btnEdit_Click" Height="36" Width="36" Source="/pencil.png"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="AddBtn" Grid.Row="1"  Content="Добавить" Click="AddBtn_Click" HorizontalAlignment="Center" Grid.Column="2"></Button>
-        <Button x:Name="delBtn" HorizontalAlignment="Center" Grid.Row="1"  Content="Удалить" Grid.Column="0" Click="delBtn_Click"></Button>
+        <Image Grid.Column="3" MouseDown="btnEdit_Click" Height="40" Width="40" Source="/edit.png" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="25" MinHeight="25"/>
+        <Image Grid.Column="4" MouseDown="AddBtn_Click" Source="/plus.png" Grid.Row="1" MinWidth="25" MinHeight="25" Height="40" VerticalAlignment="Center" Width="40"/>
+        <Image Grid.Column="5" MouseDown="delBtn_Click" Source="/delete.png" Grid.Row="1" RenderTransformOrigin="0.487,0.46" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Image Grid.Column="2" MouseDown="Export_Word" Source="/printer.png" Grid.Row="1" RenderTransformOrigin="0.487,0.46" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid Grid.Row="1" Grid.ColumnSpan="6"/>
 
     </Grid>
 </Page>
