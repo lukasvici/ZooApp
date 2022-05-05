@@ -49,12 +49,7 @@ namespace ZooApp
                 MessageBox.Show(CheckError().ToString());
                 return;
             }
-            curAnimal.Name = NameInput.Text;
-            curAnimal.birthday = DateInput.SelectedDate;
             curAnimal.image = ByteImage;
-            curAnimal.sex = SexInput.Text;
-            curAnimal.kind = KindInput.Text;
-            curAnimal.breed = BreedInput.Text;
             if(curAnimal.id == 0)
                 ZooDBEntities.GetContext().Animal.Add(curAnimal);
             try
@@ -70,14 +65,6 @@ namespace ZooApp
         StringBuilder CheckError()
         {
             StringBuilder Errors = new StringBuilder();
-            if(NameInput.Text == "")
-            {
-                Errors.AppendLine("Укажите кличку");
-            }
-            if (DateInput.SelectedDate == null)
-            {
-                Errors.AppendLine("Укажите дату рождения");
-            }
             if (ByteImage == null)
             {
                 Errors.AppendLine("Выберите фото");
@@ -89,10 +76,6 @@ namespace ZooApp
             if (KindInput.Text == "")
             {
                 Errors.AppendLine("Укажите вид");
-            }
-            if (BreedInput.Text == "")
-            {
-                Errors.AppendLine("Укажите породу");
             }
             return Errors;
 

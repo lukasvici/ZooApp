@@ -6,11 +6,39 @@
       xmlns:local="clr-namespace:ZooApp"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="People">
+      Title="People" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid Background="White">
-        <Label Content="People" HorizontalAlignment="Left" Margin="333,0,0,0" VerticalAlignment="Center"/>
-        <Button x:Name="Back" Content="Назад" HorizontalAlignment="Left" Margin="736,24,0,0" VerticalAlignment="Top" Click="Back_Click" Width="41"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="251*"/>
+            <ColumnDefinition Width="309*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="60*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="197*"/>
+            <RowDefinition Height="28*"/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="Back" Content="Назад" Margin="0,10,179,0" VerticalAlignment="Top" Click="Back_Click" HorizontalAlignment="Right" Width="62" Height="20"/>
+        <DataGrid SelectionMode="Single" ItemsSource="{Binding}" Name="DGPeoples" IsReadOnly="True" AutoGenerateColumns="False" Background="White" Margin="0,35,0,0" Grid.ColumnSpan="6">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Имя" Binding="{Binding firstname}" Width="150" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding lastname}" Width="*" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTextColumn Header="Возраст" Binding="{Binding Age}" Width="95" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTextColumn Header="Должность" Binding="{Binding position}" Width="95" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTextColumn Header="Логин" Binding="{Binding Account.login}" Width="100" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTextColumn Header="Пароль" Binding="{Binding Account.password}" Width="100" CanUserResize="False"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Image Grid.Column="3" MouseDown="btnEdit_Click" Height="40" Width="40" Source="/edit.png" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="25" MinHeight="25"/>
+        <Image Grid.Column="4" MouseDown="AddBtn_Click" Source="/plus.png" Grid.Row="1" MinWidth="25" MinHeight="25" Height="40" VerticalAlignment="Center" Width="40"/>
+        <Image Grid.Column="5" MouseDown="delBtn_Click" Source="/delete.png" Grid.Row="1" RenderTransformOrigin="0.487,0.46" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Image Grid.Column="2" MouseDown="Export_Word" Source="/printer.png" Grid.Row="1" RenderTransformOrigin="0.487,0.46" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Grid Grid.Row="1" Grid.ColumnSpan="6"/>
 
     </Grid>
 </Page>

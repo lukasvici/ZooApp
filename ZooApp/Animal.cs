@@ -27,6 +27,7 @@ namespace ZooApp
         public string sex { get; set; }
         public string kind { get; set; }
         public string breed { get; set; }
+        public string fullinfo { get { return Name + " " + kind + " " + breed; } }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Worktable> Worktable { get; set; }

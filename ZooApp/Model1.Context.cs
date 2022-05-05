@@ -15,18 +15,16 @@ namespace ZooApp
     
     public partial class ZooDBEntities : DbContext
     {
-        private static ZooDBEntities context;
+        private static ZooDBEntities _context;
         public ZooDBEntities()
             : base("name=ZooDBEntities")
         {
         }
         public static ZooDBEntities GetContext()
         {
-            if (context == null)
-            {
-                context = new ZooDBEntities();
-            }
-            return context;
+            if(_context == null)
+                _context = new ZooDBEntities();
+            return _context;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

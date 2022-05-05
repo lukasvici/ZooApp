@@ -23,7 +23,7 @@ namespace ZooApp
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Content = new Animals();
+            MainFrame.Content = new Login();
         }
     }
 }

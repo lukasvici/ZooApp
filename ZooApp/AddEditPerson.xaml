@@ -1,0 +1,38 @@
+﻿<Page x:Class="ZooApp.AddEditPerson"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ZooApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddEditPerson">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition Width="57*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="371*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Имя" HorizontalAlignment="Left" Margin="215,27,0,0" VerticalAlignment="Top" Height="26" Width="49"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" Margin="215,58,0,0" VerticalAlignment="Top" Height="26" Width="95"/>
+        <Label Content="Возраст" HorizontalAlignment="Left" Margin="215,89,0,0" VerticalAlignment="Top" Height="26" Width="65"/>
+        <Label Content="Должность" HorizontalAlignment="Left" Margin="215,120,0,0" VerticalAlignment="Top" Height="26" Width="82"/>
+        <Label Content="Логин" HorizontalAlignment="Left" Margin="215,151,0,0" VerticalAlignment="Top" Height="26" Width="52"/>
+        <TextBox x:Name="NameInput" VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="26,27,0,0" TextWrapping="Wrap" Text="{Binding firstname}" VerticalAlignment="Top" Width="270" Height="26"/>
+        <TextBox x:Name="SexInput" VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="26,58,0,0" TextWrapping="Wrap" Text="{Binding lastname}" VerticalAlignment="Top" Width="270" Height="26"/>
+        <TextBox x:Name="KindInput" VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="26,89,0,0" TextWrapping="Wrap" Text="{Binding Age}" VerticalAlignment="Top" Width="270" Height="26"/>
+        <TextBox x:Name="BreedInput" VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="26,120,0,0" TextWrapping="Wrap" Text="{Binding position}" VerticalAlignment="Top" Width="270" Height="26"/>
+        <Button x:Name="Addbtn" Content="Сохранить" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Margin="167,0,0,0" Click="Addbtn_Click"/>
+        <Button x:Name="Canselbtn" Content="Отмена" HorizontalAlignment="Center" Grid.Row="1" Click="Canselbtn_Click"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="Пароль" HorizontalAlignment="Left" Margin="215,182,0,0" VerticalAlignment="Top"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="Права Доступа" HorizontalAlignment="Left" Margin="215,213,0,0" VerticalAlignment="Top" Width="95"/>
+        <TextBox x:Name="LoginInput" VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="26,151,0,0" TextWrapping="Wrap" Text="{Binding Account.login}" VerticalAlignment="Top" Width="270" Height="26"/>
+        <TextBox x:Name="PasswordInput" VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="26,182,0,0" TextWrapping="Wrap" Text="{Binding Account.password}" VerticalAlignment="Top" Width="270" Height="26"/>
+        <TextBox x:Name="PermissionInput" VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="26,213,0,0" TextWrapping="Wrap" Text="{Binding Account.permission}" VerticalAlignment="Top" Width="270" Height="26"/>
+
+    </Grid>
+</Page>

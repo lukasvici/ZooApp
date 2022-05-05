@@ -10,7 +10,6 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idperson" Type="int" Nullable="false" />
           <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="permission" Type="int" Nullable="false" />
@@ -36,6 +35,7 @@
           <Property Name="lastname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Age" Type="int" Nullable="false" />
           <Property Name="position" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idaccount" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -56,17 +56,15 @@
           <Property Name="workerid" Type="int" Nullable="false" />
           <Property Name="animalid" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Account_Person">
-          <End Role="Person" Type="Self.Person" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+        <Association Name="FK_Person_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Person">
+            <Principal Role="Account">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Account">
-              <PropertyRef Name="idperson" />
+            <Dependent Role="Person">
+              <PropertyRef Name="idaccount" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -102,9 +100,9 @@
           <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worktable" EntityType="Self.Worktable" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Account_Person" Association="Self.FK_Account_Person">
-            <End Role="Person" EntitySet="Person" />
+          <AssociationSet Name="FK_Person_Account" Association="Self.FK_Person_Account">
             <End Role="Account" EntitySet="Account" />
+            <End Role="Person" EntitySet="Person" />
           </AssociationSet>
           <AssociationSet Name="FK_Worktable_Animal" Association="Self.FK_Worktable_Animal">
             <End Role="Animal" EntitySet="Animal" />
@@ -125,11 +123,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idperson" Type="Int32" Nullable="false" />
           <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="permission" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Person" Relationship="Self.FK_Account_Person" FromRole="Account" ToRole="Person" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Person_Account" FromRole="Account" ToRole="Person" />
         </EntityType>
         <EntityType Name="Animal">
           <Key>
@@ -153,7 +150,8 @@
           <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Age" Type="Int32" Nullable="false" />
           <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Account" Relationship="Self.FK_Account_Person" FromRole="Person" ToRole="Account" />
+          <Property Name="idaccount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Person_Account" FromRole="Person" ToRole="Account" />
           <NavigationProperty Name="Worktable" Relationship="Self.FK_Worktable_Person" FromRole="Person" ToRole="Worktable" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -177,17 +175,15 @@
           <NavigationProperty Name="Animal" Relationship="Self.FK_Worktable_Animal" FromRole="Worktable" ToRole="Animal" />
           <NavigationProperty Name="Person" Relationship="Self.FK_Worktable_Person" FromRole="Worktable" ToRole="Person" />
         </EntityType>
-        <Association Name="FK_Account_Person">
-          <End Role="Person" Type="Self.Person" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+        <Association Name="FK_Person_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Person">
+            <Principal Role="Account">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Account">
-              <PropertyRef Name="idperson" />
+            <Dependent Role="Person">
+              <PropertyRef Name="idaccount" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -223,9 +219,9 @@
           <EntitySet Name="Person" EntityType="Self.Person" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Worktable" EntityType="Self.Worktable" />
-          <AssociationSet Name="FK_Account_Person" Association="Self.FK_Account_Person">
-            <End Role="Person" EntitySet="Person" />
+          <AssociationSet Name="FK_Person_Account" Association="Self.FK_Person_Account">
             <End Role="Account" EntitySet="Account" />
+            <End Role="Person" EntitySet="Person" />
           </AssociationSet>
           <AssociationSet Name="FK_Worktable_Animal" Association="Self.FK_Worktable_Animal">
             <End Role="Animal" EntitySet="Animal" />
@@ -246,7 +242,6 @@
             <EntityTypeMapping TypeName="ZooDBModel.Account">
               <MappingFragment StoreEntitySet="Account">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="idperson" ColumnName="idperson" />
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="permission" ColumnName="permission" />
@@ -274,6 +269,7 @@
                 <ScalarProperty Name="lastname" ColumnName="lastname" />
                 <ScalarProperty Name="Age" ColumnName="Age" />
                 <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="idaccount" ColumnName="idaccount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

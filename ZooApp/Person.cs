@@ -17,7 +17,6 @@ namespace ZooApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Person()
         {
-            this.Account = new HashSet<Account>();
             this.Worktable = new HashSet<Worktable>();
         }
     
@@ -26,9 +25,10 @@ namespace ZooApp
         public string lastname { get; set; }
         public int Age { get; set; }
         public string position { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Account> Account { get; set; }
+        public Nullable<int> idaccount { get; set; }
+        public string fullname { get { return firstname + " " + lastname; } }
+
+        public virtual Account Account { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Worktable> Worktable { get; set; }
     }
