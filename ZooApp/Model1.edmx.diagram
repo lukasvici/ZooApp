@@ -4,11 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="340a90f518c54e8ca88c32bbdfaa85a1" Name="Diagram1">
+      <Diagram DiagramId="8050e417d9984b298efcd12a0cd728d5" Name="Diagram1">
         <EntityTypeShape EntityType="ZooDBModel.Account" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ZooDBModel.Animal" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="ZooDBModel.Person" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZooDBModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ZooDBModel.Worktable" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="ZooDBModel.FK_Person_Account" ManuallyRouted="false" />
         <AssociationConnector Association="ZooDBModel.FK_Worktable_Animal" ManuallyRouted="false" />

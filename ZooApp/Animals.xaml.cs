@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -14,7 +15,7 @@ namespace ZooApp
         public Animals()
         {
             InitializeComponent();
-            DGAnimals.ItemsSource = ZooDBEntities.GetContext().Animal.ToList();
+            DGAnimals.ItemsSource = ZooDBEntities1.GetContext().Animal.ToList();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -42,8 +43,8 @@ namespace ZooApp
         {
             if(Visibility == Visibility.Visible)
             {
-                ZooDBEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                DGAnimals.ItemsSource = ZooDBEntities.GetContext().Animal.ToList();
+                ZooDBEntities1.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                DGAnimals.ItemsSource = ZooDBEntities1.GetContext().Animal.ToList();
             }
         }
 
@@ -54,9 +55,9 @@ namespace ZooApp
             {
                 try
                 {
-                    ZooDBEntities.GetContext().Animal.RemoveRange(AnimalsListToRemove);
-                    ZooDBEntities.GetContext().SaveChanges();
-                    DGAnimals.ItemsSource = ZooDBEntities.GetContext().Animal.ToList();
+                    ZooDBEntities1.GetContext().Animal.RemoveRange(AnimalsListToRemove);
+                    ZooDBEntities1.GetContext().SaveChanges();
+                    DGAnimals.ItemsSource = ZooDBEntities1.GetContext().Animal.ToList();
                 }
                 catch (Exception ex)
                 {
@@ -74,16 +75,23 @@ namespace ZooApp
             Word.Shape shape;
 
             Word.Range userrange = paragraph.Range;
-            userrange.Text = "Кличка: " + animalset.Name + "\n";
+            userrange.Text = "\nКличка: " + animalset.Name + "\n";
             userrange.Text += "Дата рождения: " + animalset.birthday + "\n";
             userrange.Text += "Пол: " + animalset.sex + "\n";
             userrange.Text += "Вид: " + animalset.kind + "\n";
             userrange.Text += "Порода: " + animalset.breed + "\n";
-            
+            BitmapEncoder encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(LoadImage(animalset.image)));
+
+            using (var fileStream = new System.IO.FileStream("temp.png", System.IO.FileMode.Create))
+            {
+                encoder.Save(fileStream);
+            }
+            WordApp.Selection.InlineShapes.AddPicture(@"C:\Users\Praktika\source\repos\ZooApp\ZooApp\bin\Debug\temp.png");
             WordApp.Visible = true;
 
         }
-        private static BitmapImage LoadImage(byte[] imageData)
+        private BitmapImage LoadImage(byte[] imageData)
         {
             if (imageData == null || imageData.Length == 0) return null;
             var image = new BitmapImage();
@@ -100,5 +108,6 @@ namespace ZooApp
             image.Freeze();
             return image;
         }
+
     }
 }

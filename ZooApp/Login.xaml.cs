@@ -26,15 +26,15 @@ namespace ZooApp
         }
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            ZooDBEntities db = new ZooDBEntities();
+            ZooDBEntities1 db = new ZooDBEntities1();
             try
             {
                 var docs = from d in db.Account where d.login.Equals(LoginInput.Text) select d;
                 if (PassInput.Text == docs.First().password)
                 {
                     NavigationService.Navigate(new MainPage(docs.First().permission));
-                    PassInput.Text = "Введите пароль";
-                    LoginInput.Text = "Введите логин";
+                    PassInput.Text = "";
+                    LoginInput.Text = "";
                 }
                 else
                 {

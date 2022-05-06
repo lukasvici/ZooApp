@@ -23,7 +23,7 @@ namespace ZooApp
         public People()
         {
             InitializeComponent();
-            DGPeoples.ItemsSource = ZooDBEntities.GetContext().Person.ToList();
+            DGPeoples.ItemsSource = ZooDBEntities1.GetContext().Person.ToList();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -48,9 +48,10 @@ namespace ZooApp
             {
                 try
                 {
-                    ZooDBEntities.GetContext().Person.RemoveRange(PeopleListToRemove);
-                    ZooDBEntities.GetContext().SaveChanges();
-                    DGPeoples.ItemsSource = ZooDBEntities.GetContext().Person.ToList();
+                    ZooDBEntities1.GetContext().Account.Remove(PeopleListToRemove[0].Account);
+                    ZooDBEntities1.GetContext().Person.RemoveRange(PeopleListToRemove);
+                    ZooDBEntities1.GetContext().SaveChanges();
+                    DGPeoples.ItemsSource = ZooDBEntities1.GetContext().Person.ToList();
                 }
                 catch (Exception ex)
                 {
@@ -68,8 +69,8 @@ namespace ZooApp
         {
             if (Visibility == Visibility.Visible)
             {
-                ZooDBEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                DGPeoples.ItemsSource = ZooDBEntities.GetContext().Person.ToList();
+                ZooDBEntities1.GetContext().ChangeTracker.Entries().ToList().ForEach(k => k.Reload());
+                DGPeoples.ItemsSource = ZooDBEntities1.GetContext().Person.ToList();
             }
         }
     }

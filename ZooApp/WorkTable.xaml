@@ -27,7 +27,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Время" Binding="{Binding worktime}" Width="150" CanUserResize="False"></DataGridTextColumn>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Person.firstname}" Width="*" CanUserResize="False"></DataGridTextColumn>
-                <DataGridTextColumn Header="Фамилия" Binding="{Binding Person.lastname}" Width="*" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Person.lasname}" Width="*" CanUserResize="False"></DataGridTextColumn>
                 <DataGridTextColumn Header="Кличка" Binding="{Binding Animal.Name}" Width="95" CanUserResize="False"></DataGridTextColumn>
                 <DataGridTextColumn Header="Вид" Binding="{Binding Animal.kind}" Width="95" CanUserResize="False"></DataGridTextColumn>
                 <DataGridTextColumn Header="Порода" Binding="{Binding Animal.breed}" Width="95" CanUserResize="False"></DataGridTextColumn>

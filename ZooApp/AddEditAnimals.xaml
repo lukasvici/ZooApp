@@ -27,11 +27,11 @@
         <TextBox x:Name="NameInput" VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="26,27,0,0" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" Width="270" Height="26"/>
         <TextBox x:Name="SexInput" VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="26,97,0,0" TextWrapping="Wrap" Text="{Binding sex}" VerticalAlignment="Top" Width="270" Height="26"/>
         <TextBox x:Name="KindInput" VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="26,128,0,0" TextWrapping="Wrap" Text="{Binding kind}" VerticalAlignment="Top" Width="270" Height="26"/>
-        <TextBox x:Name="BreedInput" VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="26,159,0,0" TextWrapping="Wrap" Text="{Binding breed}" VerticalAlignment="Top" Width="270" Height="26"/>
+        <TextBox x:Name="BreedInput" VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="26,160,0,0" TextWrapping="Wrap" Text="{Binding breed}" VerticalAlignment="Top" Width="270" Height="26"/>
         <Button x:Name="Addbtn" Content="Сохранить" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Margin="167,0,0,0" Click="Addbtn_Click"/>
         <Button x:Name="Canselbtn" Content="Отмена" HorizontalAlignment="Center" Grid.Row="1" Click="Canselbtn_Click"/>
         <Label Grid.Row="0" Grid.Column="0" Content="Фото" HorizontalAlignment="Left" Margin="215,199,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="ChooseFile" Grid.Column="1" Content="Выбрать Фото" HorizontalAlignment="Left" Margin="26,199,0,0" VerticalAlignment="Top" Width="270" Background="#FFE0E0E0" Click="ChooseFile_Click"/>
-
+        <Button x:Name="ChooseFile" Grid.Column="1" Content="Выбрать Фото" HorizontalAlignment="Left" Margin="26,200,0,0" VerticalAlignment="Top" Width="270" Background="#FFE0E0E0" Click="ChooseFile_Click"/>
+        <Image Source="{Binding image}"  x:Name="PhotoPreview" Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="26,246,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Page>

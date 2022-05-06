@@ -28,20 +28,20 @@ namespace ZooApp
             if (selectedWorktable != null)
                 curWorkTable = selectedWorktable;
             DataContext = curWorkTable;
-            ComboWorker.ItemsSource = ZooDBEntities.GetContext().Person.ToList();
-            ComboAnimal.ItemsSource = ZooDBEntities.GetContext().Animal.ToList();
+            ComboWorker.ItemsSource = ZooDBEntities1.GetContext().Person.ToList();
+            ComboAnimal.ItemsSource = ZooDBEntities1.GetContext().Animal.ToList();
         }
 
         private void Addbtn_Click(object sender, RoutedEventArgs e)
         {
             if (curWorkTable.id == 0)
             {
-                ZooDBEntities.GetContext().Worktable.Add(curWorkTable);
+                ZooDBEntities1.GetContext().Worktable.Add(curWorkTable);
             }
                 
             try
             {
-                ZooDBEntities.GetContext().SaveChanges();
+                ZooDBEntities1.GetContext().SaveChanges();
                 NavigationService.GoBack();
             }
             catch (Exception ex)

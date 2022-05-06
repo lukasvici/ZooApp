@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 
 namespace ZooApp
@@ -38,7 +39,8 @@ namespace ZooApp
             if (openFileDialog.ShowDialog() == true)
             {
                 Uri fileUri = new Uri(openFileDialog.FileName);
-                ByteImage = File.ReadAllBytes(fileUri.LocalPath); 
+                ByteImage = File.ReadAllBytes(fileUri.LocalPath);
+                PhotoPreview.Source = LoadImage(ByteImage);
             }
         }
 
@@ -51,10 +53,10 @@ namespace ZooApp
             }
             curAnimal.image = ByteImage;
             if(curAnimal.id == 0)
-                ZooDBEntities.GetContext().Animal.Add(curAnimal);
+                ZooDBEntities1.GetContext().Animal.Add(curAnimal);
             try
             {
-                ZooDBEntities.GetContext().SaveChanges();
+                ZooDBEntities1.GetContext().SaveChanges();
             }
             catch(Exception ex)
             {
@@ -79,6 +81,23 @@ namespace ZooApp
             }
             return Errors;
 
+        }
+        private static BitmapImage LoadImage(byte[] imageData)
+        {
+            if (imageData == null || imageData.Length == 0) return null;
+            var image = new BitmapImage();
+            using (var mem = new MemoryStream(imageData))
+            {
+                mem.Position = 0;
+                image.BeginInit();
+                image.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.UriSource = null;
+                image.StreamSource = mem;
+                image.EndInit();
+            }
+            image.Freeze();
+            return image;
         }
     }
 }

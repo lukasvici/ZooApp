@@ -23,7 +23,7 @@
         <Label Content="Должность" HorizontalAlignment="Left" Margin="215,120,0,0" VerticalAlignment="Top" Height="26" Width="82"/>
         <Label Content="Логин" HorizontalAlignment="Left" Margin="215,151,0,0" VerticalAlignment="Top" Height="26" Width="52"/>
         <TextBox x:Name="NameInput" VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="26,27,0,0" TextWrapping="Wrap" Text="{Binding firstname}" VerticalAlignment="Top" Width="270" Height="26"/>
-        <TextBox x:Name="SexInput" VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="26,58,0,0" TextWrapping="Wrap" Text="{Binding lastname}" VerticalAlignment="Top" Width="270" Height="26"/>
+        <TextBox x:Name="SexInput" VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="26,58,0,0" TextWrapping="Wrap" Text="{Binding lasname}" VerticalAlignment="Top" Width="270" Height="26"/>
         <TextBox x:Name="KindInput" VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="26,89,0,0" TextWrapping="Wrap" Text="{Binding Age}" VerticalAlignment="Top" Width="270" Height="26"/>
         <TextBox x:Name="BreedInput" VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" Margin="26,120,0,0" TextWrapping="Wrap" Text="{Binding position}" VerticalAlignment="Top" Width="270" Height="26"/>
         <Button x:Name="Addbtn" Content="Сохранить" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Margin="167,0,0,0" Click="Addbtn_Click"/>

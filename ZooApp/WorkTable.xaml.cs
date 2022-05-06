@@ -23,7 +23,7 @@ namespace ZooApp
         public WorkTable()
         {
             InitializeComponent();
-            DGWorkTable.ItemsSource = ZooDBEntities.GetContext().Worktable.ToList();
+            DGWorkTable.ItemsSource = ZooDBEntities1.GetContext().Worktable.ToList();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -38,9 +38,9 @@ namespace ZooApp
             {
                 try
                 {
-                    ZooDBEntities.GetContext().Worktable.RemoveRange(WorkTableListToRemove);
-                    ZooDBEntities.GetContext().SaveChanges();
-                    DGWorkTable.ItemsSource = ZooDBEntities.GetContext().Worktable.ToList();
+                    ZooDBEntities1.GetContext().Worktable.RemoveRange(WorkTableListToRemove);
+                    ZooDBEntities1.GetContext().SaveChanges();
+                    DGWorkTable.ItemsSource = ZooDBEntities1.GetContext().Worktable.ToList();
                 }
                 catch (Exception ex)
                 {
@@ -58,8 +58,8 @@ namespace ZooApp
         {
             if (Visibility == Visibility.Visible)
             {
-                ZooDBEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                DGWorkTable.ItemsSource = ZooDBEntities.GetContext().Worktable.ToList();
+                ZooDBEntities1.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                DGWorkTable.ItemsSource = ZooDBEntities1.GetContext().Worktable.ToList();
             }
         }
 

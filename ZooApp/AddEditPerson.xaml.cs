@@ -36,7 +36,7 @@ namespace ZooApp
             if (curPerson.id == 0)
             {   
                 
-                ZooDBEntities.GetContext().Person.Add(curPerson);
+                ZooDBEntities1.GetContext().Person.Add(curPerson);
             }
             try
             {
@@ -46,9 +46,9 @@ namespace ZooApp
                     curPerson.Account.login = LoginInput.Text;
                     curPerson.Account.password = PasswordInput.Text;
                     curPerson.Account.permission = Convert.ToInt32(PermissionInput.Text);
-                    ZooDBEntities.GetContext().Account.Add(curPerson.Account);
+                    ZooDBEntities1.GetContext().Account.Add(curPerson.Account);
                 }
-                ZooDBEntities.GetContext().SaveChanges();
+                ZooDBEntities1.GetContext().SaveChanges();
             }
             catch (Exception ex)
             {

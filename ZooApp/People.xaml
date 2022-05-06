@@ -26,7 +26,7 @@
         <DataGrid SelectionMode="Single" ItemsSource="{Binding}" Name="DGPeoples" IsReadOnly="True" AutoGenerateColumns="False" Background="White" Margin="0,35,0,0" Grid.ColumnSpan="6">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Имя" Binding="{Binding firstname}" Width="150" CanUserResize="False"></DataGridTextColumn>
-                <DataGridTextColumn Header="Фамилия" Binding="{Binding lastname}" Width="*" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding lasname}" Width="*" CanUserResize="False"></DataGridTextColumn>
                 <DataGridTextColumn Header="Возраст" Binding="{Binding Age}" Width="95" CanUserResize="False"></DataGridTextColumn>
                 <DataGridTextColumn Header="Должность" Binding="{Binding position}" Width="95" CanUserResize="False"></DataGridTextColumn>
                 <DataGridTextColumn Header="Логин" Binding="{Binding Account.login}" Width="100" CanUserResize="False"></DataGridTextColumn>
