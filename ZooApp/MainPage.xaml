@@ -11,7 +11,7 @@
     <Grid x:Name="MainGrid" Background="White">
         <Grid x:Name="ButtonsGrid" Margin="0,0,588,0" />
         <Grid x:Name="PersonInfo" Margin="217,0,0,0" >
-            <Button x:Name="Quit" Content="Выйти" HorizontalAlignment="Left" Margin="522,20,0,0" VerticalAlignment="Top" Click="Quit_Click"/>
+            <Button x:Name="Quit" Content="Выйти" HorizontalAlignment="Left" Margin="482,23,0,0" VerticalAlignment="Top" Click="Quit_Click"/>
         </Grid>
     </Grid>
 </Page>

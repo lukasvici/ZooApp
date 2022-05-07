@@ -32,6 +32,6 @@
         <Button x:Name="Canselbtn" Content="Отмена" HorizontalAlignment="Center" Grid.Row="1" Click="Canselbtn_Click"/>
         <Label Grid.Row="0" Grid.Column="0" Content="Фото" HorizontalAlignment="Left" Margin="215,199,0,0" VerticalAlignment="Top"/>
         <Button x:Name="ChooseFile" Grid.Column="1" Content="Выбрать Фото" HorizontalAlignment="Left" Margin="26,199,0,0" VerticalAlignment="Top" Width="270" Background="#FFE0E0E0" Click="ChooseFile_Click"/>
-
+        <Image Source="{Binding image}"  x:Name="PhotoPreview" Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="26,246,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Page>

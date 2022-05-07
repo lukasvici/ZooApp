@@ -48,6 +48,7 @@ namespace ZooApp
             {
                 try
                 {
+                    ZooDBEntities.GetContext().Account.Remove(PeopleListToRemove[0].Account);
                     ZooDBEntities.GetContext().Person.RemoveRange(PeopleListToRemove);
                     ZooDBEntities.GetContext().SaveChanges();
                     DGPeoples.ItemsSource = ZooDBEntities.GetContext().Person.ToList();

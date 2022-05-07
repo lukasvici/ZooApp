@@ -34,8 +34,8 @@ namespace ZooApp
             for(int i = 0; i< permission; i++)
             {
                 Button btn = new Button();
-                btn.Height = 23;
-                btn.Width = 80;
+                btn.Height = 30;
+                btn.Width = 120;
                 btn.Margin = new Thickness(20, 0, 0, i*80);
                 btn.Content = PermissionPages[i];
                 btn.Click += (object sender, RoutedEventArgs e) =>

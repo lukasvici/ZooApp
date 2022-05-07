@@ -9,8 +9,8 @@
       Title="Login">
 
     <Grid Background="White">
-        <TextBox x:Name="LoginInput" HorizontalAlignment="Center" Margin="0,113,0,0" TextWrapping="Wrap" Text="Введите логин" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="PassInput" HorizontalAlignment="Center" Margin="0,169,0,0" TextWrapping="Wrap" Text="Введите пароль" VerticalAlignment="Top" Width="120"/>
+        <TextBox Style="{StaticResource DefultTextBox}" x:Name="LoginInput" HorizontalAlignment="Center" Margin="0,113,0,0" TextWrapping="Wrap" Tag="Введите логин" VerticalAlignment="Top" Width="120"/>
+        <TextBox Style="{StaticResource DefultTextBox}" x:Name="PassInput" HorizontalAlignment="Center" Margin="0,169,0,0" TextWrapping="Wrap" Tag="Введите пароль" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="LoginButton" Content="Войти" HorizontalAlignment="Center" Margin="0,225,0,0" VerticalAlignment="Top" Width="120" Height="30" Click="LoginButton_Click"/>
 
     </Grid>

@@ -71,15 +71,21 @@ namespace ZooApp
             var WordApp = new Word.Application();
             Word.Document document = WordApp.Documents.Add();
             Word.Paragraph paragraph = document.Paragraphs.Add();
-            Word.Shape shape;
 
             Word.Range userrange = paragraph.Range;
-            userrange.Text = "Кличка: " + animalset.Name + "\n";
+            userrange.Text = "\n" + "Кличка: " + animalset.Name + "\n";
             userrange.Text += "Дата рождения: " + animalset.birthday + "\n";
             userrange.Text += "Пол: " + animalset.sex + "\n";
             userrange.Text += "Вид: " + animalset.kind + "\n";
             userrange.Text += "Порода: " + animalset.breed + "\n";
-            
+            BitmapEncoder encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(LoadImage(animalset.image)));
+
+            using (var fileStream = new System.IO.FileStream("temp.png", System.IO.FileMode.Create))
+            {
+                encoder.Save(fileStream);
+            }
+            var shape = WordApp.Selection.InlineShapes.AddPicture(System.AppDomain.CurrentDomain.BaseDirectory + "temp.png");
             WordApp.Visible = true;
 
         }

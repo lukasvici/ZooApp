@@ -5,10 +5,72 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <Style TargetType="Button">
-            <Setter Property="Width" Value="175"></Setter>
-            <Setter Property="Height" Value="30"></Setter>
-            <Setter Property="VerticalAlignment" Value="Center"></Setter>
-            <Setter Property="Background" Value="#fac716"></Setter>
+            <Setter Property="Background" Value="#FFE2E2E2"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="12,4,12,4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="OuterBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            
+                            <Border x:Name="InnerBorder"
+                                Background="{TemplateBinding Background}">
+                                <ContentPresenter x:Name="ContentPresenter"
+                                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                Content="{TemplateBinding Content}"
+                                                Margin="{TemplateBinding Padding}"
+                                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TextBox" x:Key="DefultTextBox">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Background" Value="White"/>
+            <!--<Setter Property="Foreground" Value="{StaticResource BlackSite}"/>
+            <Setter Property="CaretBrush" Value="{StaticResource BlackSite}"/>-->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid Margin="5">
+                                <ScrollViewer Name="PART_ContentHost" 
+                                              VerticalAlignment="Center"/>
+                                <TextBlock Name="hint"
+                                           VerticalAlignment="Center"
+                                           Background="Transparent"
+                                           FontSize="{TemplateBinding FontSize}"
+                                           Foreground="Gray"
+                                           IsHitTestVisible ="False"
+                                           Text="{TemplateBinding Tag}"
+                                           TextAlignment="{TemplateBinding TextAlignment}"
+                                           Visibility="Collapsed"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Text" Value=""/>
+                                </MultiTrigger.Conditions>
+                                <Setter TargetName="hint" Property="Visibility" Value="Visible"/>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Application.Resources>
 </Application>

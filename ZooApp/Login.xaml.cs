@@ -33,8 +33,8 @@ namespace ZooApp
                 if (PassInput.Text == docs.First().password)
                 {
                     NavigationService.Navigate(new MainPage(docs.First().permission));
-                    PassInput.Text = "Введите пароль";
-                    LoginInput.Text = "Введите логин";
+                    PassInput.Text = "";
+                    LoginInput.Text = "";
                 }
                 else
                 {
