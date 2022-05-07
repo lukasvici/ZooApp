@@ -7,7 +7,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using Word = Microsoft.Office.Interop.Word;
 
-namespace ZooApp
+namespace ZooApp.Pages
 {
     public partial class Animals : Page
     {
@@ -74,7 +74,7 @@ namespace ZooApp
 
             Word.Range userrange = paragraph.Range;
             userrange.Text = "\n" + "Кличка: " + animalset.Name + "\n";
-            userrange.Text += "Дата рождения: " + animalset.birthday + "\n";
+            userrange.Text += "Дата рождения: " + animalset.birthdayformat + "\n";
             userrange.Text += "Пол: " + animalset.sex + "\n";
             userrange.Text += "Вид: " + animalset.kind + "\n";
             userrange.Text += "Порода: " + animalset.breed + "\n";

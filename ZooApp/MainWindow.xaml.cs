@@ -23,7 +23,7 @@ namespace ZooApp
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Content = (new Login());
+            MainFrame.Content = new Pages.Login();
         }
     }
 }

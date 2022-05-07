@@ -108,26 +108,11 @@
     <Compile Include="Account.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="AddEditAnimals.xaml.cs">
-      <DependentUpon>AddEditAnimals.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AddEditPerson.xaml.cs">
-      <DependentUpon>AddEditPerson.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AddEditWorkTable.xaml.cs">
-      <DependentUpon>AddEditWorkTable.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Animal.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Animals.xaml.cs">
+    <Compile Include="Pages\Animals.xaml.cs">
       <DependentUpon>Animals.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -144,7 +129,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="People.xaml.cs">
+    <Compile Include="Pages\AddEditAnimals.xaml.cs">
+      <DependentUpon>AddEditAnimals.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddEditPerson.xaml.cs">
+      <DependentUpon>AddEditPerson.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddEditWorkTable.xaml.cs">
+      <DependentUpon>AddEditWorkTable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\People.xaml.cs">
       <DependentUpon>People.xaml</DependentUpon>
     </Compile>
     <Compile Include="Person.cs">
@@ -156,7 +156,7 @@
     <Compile Include="Worktable.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="WorkTable.xaml.cs">
+    <Compile Include="Pages\WorkTable.xaml.cs">
       <DependentUpon>WorkTable.xaml</DependentUpon>
     </Compile>
     <Compile Include="ZooDBDataSet.Designer.cs">
@@ -164,27 +164,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ZooDBDataSet.xsd</DependentUpon>
     </Compile>
-    <Page Include="AddEditAnimals.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AddEditPerson.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AddEditWorkTable.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Animals.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Login.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="Pages\Animals.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -200,11 +180,31 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="People.xaml">
+    <Page Include="Pages\AddEditAnimals.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WorkTable.xaml">
+    <Page Include="Pages\AddEditPerson.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddEditWorkTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\People.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WorkTable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

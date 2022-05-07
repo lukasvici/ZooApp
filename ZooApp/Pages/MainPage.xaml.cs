@@ -1,5 +1,4 @@
-﻿using Microsoft.CodeAnalysis.CSharp.Scripting;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ZooApp
+namespace ZooApp.Pages
 {
+    /// <summary>
+    /// Interaction logic for MainPage.xaml
+    /// </summary>
     public partial class MainPage : Page
     {
         string[] PermissionPages = { "Животные", "Расписание", "Сотрудники" };
@@ -26,17 +28,17 @@ namespace ZooApp
         }
         void GenerateButtons(int permission)
         {
-            if(permission<1 || permission > 3)
+            if (permission < 1 || permission > 3)
             {
                 MessageBox.Show("Не правильные права в бд!");
                 Application.Current.Windows[0].Close();
             }
-            for(int i = 0; i< permission; i++)
+            for (int i = 0; i < permission; i++)
             {
                 Button btn = new Button();
                 btn.Height = 30;
                 btn.Width = 120;
-                btn.Margin = new Thickness(20, 0, 0, i*80);
+                btn.Margin = new Thickness(20, 0, 0, i * 80);
                 btn.Content = PermissionPages[i];
                 btn.Click += (object sender, RoutedEventArgs e) =>
                 {
@@ -57,7 +59,7 @@ namespace ZooApp
                 };
                 ButtonsGrid.Children.Add(btn);
             }
-            
+
         }
 
         private void Quit_Click(object sender, RoutedEventArgs e)

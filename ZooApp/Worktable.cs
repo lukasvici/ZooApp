@@ -15,7 +15,8 @@ namespace ZooApp
     public partial class Worktable
     {
         public int id { get; set; }
-        public System.DateTime worktime { get; set; }
+        public Nullable<System.DateTime> worktime { get; set; }
+        public string worktimeformat { get { return Convert.ToDateTime(worktime).ToString("dd/MM/yyy HH:mm"); } }
         public int workerid { get; set; }
         public int animalid { get; set; }
     

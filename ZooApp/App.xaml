@@ -4,7 +4,8 @@
              xmlns:local="clr-namespace:ZooApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style TargetType="Button">
+        
+        <Style x:Key="ButtonStyle1" TargetType="Button">
             <Setter Property="Background" Value="#FFE2E2E2"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -72,5 +73,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+
+
     </Application.Resources>
 </Application>

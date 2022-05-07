@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ZooApp
+namespace ZooApp.Pages
 {
     /// <summary>
     /// Interaction logic for AddEditPerson.xaml
@@ -24,18 +24,21 @@ namespace ZooApp
         public AddEditPerson(Person selectedPerson)
         {
             InitializeComponent();
-            if(selectedPerson != null)
+            if (selectedPerson != null)
             {
                 curPerson = selectedPerson;
             }
             DataContext = curPerson;
         }
-
         private void Addbtn_Click(object sender, RoutedEventArgs e)
         {
+            if(CheckErrors().Length > 0)
+            {
+                MessageBox.Show(CheckErrors().ToString(), "Alert", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             if (curPerson.id == 0)
-            {   
-                
+            {
                 ZooDBEntities.GetContext().Person.Add(curPerson);
             }
             try
@@ -61,7 +64,18 @@ namespace ZooApp
         {
             NavigationService.GoBack();
         }
-
-
+        StringBuilder CheckErrors()
+        {
+            StringBuilder Errors = new StringBuilder();
+            if (string.IsNullOrEmpty(NameInput.Text.Replace(" ", "")))
+                Errors.AppendLine("Укажите имя");
+            if (string.IsNullOrEmpty(SurnameInput.Text.Replace(" ", "")))
+                Errors.AppendLine("Укажите фамилию");
+            if (string.IsNullOrEmpty(AgeInput.Text.Replace(" ", "")) || Convert.ToInt32(AgeInput.Text) < 18)
+                Errors.AppendLine("Укажите возраст");
+            if (string.IsNullOrEmpty(PositionInput.Text.Replace(" ", "")))
+                Errors.AppendLine("Укажите должность");
+            return Errors;
+        }
     }
 }

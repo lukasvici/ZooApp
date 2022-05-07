@@ -23,6 +23,7 @@ namespace ZooApp
         public int id { get; set; }
         public string Name { get; set; }
         public Nullable<System.DateTime> birthday { get; set; }
+        public string birthdayformat { get { if (birthday != null) { return Convert.ToDateTime(birthday).ToString("dd/MM/yyy"); } else { return ""; } } }
         public byte[] image { get; set; }
         public string sex { get; set; }
         public string kind { get; set; }

@@ -13,17 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ZooApp
+namespace ZooApp.Pages
 {
     /// <summary>
-    /// Interaction logic for WorkTable.xaml
+    /// Interaction logic for People.xaml
     /// </summary>
-    public partial class WorkTable : Page
+    public partial class People : Page
     {
-        public WorkTable()
+        public People()
         {
             InitializeComponent();
-            DGWorkTable.ItemsSource = ZooDBEntities.GetContext().Worktable.ToList();
+            DGPeoples.ItemsSource = ZooDBEntities.GetContext().Person.ToList();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -31,16 +31,28 @@ namespace ZooApp
             NavigationService.GoBack();
         }
 
+        private void btnEdit_Click(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new AddEditPerson(DGPeoples.SelectedItem as Person));
+        }
+
+        private void AddBtn_Click(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new AddEditPerson(null));
+        }
+
         private void delBtn_Click(object sender, MouseButtonEventArgs e)
         {
-            var WorkTableListToRemove = DGWorkTable.SelectedItems.Cast<Worktable>().ToList();
+            var PeopleListToRemove = DGPeoples.SelectedItems.Cast<Person>().ToList();
             if (MessageBox.Show("Вы точно хотите удалить выделенные строчки?", "Подтверждение", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
-                    ZooDBEntities.GetContext().Worktable.RemoveRange(WorkTableListToRemove);
+                    if(PeopleListToRemove[0].Account != null)
+                        ZooDBEntities.GetContext().Account.Remove(PeopleListToRemove[0].Account);
+                    ZooDBEntities.GetContext().Person.RemoveRange(PeopleListToRemove);
                     ZooDBEntities.GetContext().SaveChanges();
-                    DGWorkTable.ItemsSource = ZooDBEntities.GetContext().Worktable.ToList();
+                    DGPeoples.ItemsSource = ZooDBEntities.GetContext().Person.ToList();
                 }
                 catch (Exception ex)
                 {
@@ -49,9 +61,9 @@ namespace ZooApp
             }
         }
 
-        private void AddBtn_Click(object sender, MouseButtonEventArgs e)
+        private void Export_Word(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.Navigate(new AddEditWorkTable(null));
+
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -59,13 +71,8 @@ namespace ZooApp
             if (Visibility == Visibility.Visible)
             {
                 ZooDBEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                DGWorkTable.ItemsSource = ZooDBEntities.GetContext().Worktable.ToList();
+                DGPeoples.ItemsSource = ZooDBEntities.GetContext().Person.ToList();
             }
-        }
-
-        private void btnEdit_Click(object sender, MouseButtonEventArgs e)
-        {
-            NavigationService.Navigate(new AddEditWorkTable(DGWorkTable.SelectedItem as Worktable));
         }
     }
 }

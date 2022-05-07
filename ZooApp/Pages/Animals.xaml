@@ -1,12 +1,12 @@
-﻿<Page x:Class="ZooApp.People"
+﻿<Page x:Class="ZooApp.Pages.Animals"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ZooApp"
+      xmlns:local="clr-namespace:ZooApp.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="People" IsVisibleChanged="Page_IsVisibleChanged">
+      Title="Animals" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid Background="White">
         <Grid.ColumnDefinitions>
@@ -22,15 +22,21 @@
             <RowDefinition Height="28*"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="Back" Content="Назад" Margin="0,10,179,0" VerticalAlignment="Top" Click="Back_Click" HorizontalAlignment="Right" Width="62" Height="20"/>
-        <DataGrid SelectionMode="Single" ItemsSource="{Binding}" Name="DGPeoples" IsReadOnly="True" AutoGenerateColumns="False" Background="White" Margin="0,35,0,0" Grid.ColumnSpan="6">
+        <Button x:Name="Back" Content="Назад" Margin="0,7,179,0" VerticalAlignment="Top" Click="Back_Click" HorizontalAlignment="Right" Width="62" Height="23"/>
+        <DataGrid SelectionMode="Single" ItemsSource="{Binding}" Name="DGAnimals" IsReadOnly="True" AutoGenerateColumns="False" Background="White" Margin="0,35,0,0" Grid.ColumnSpan="6">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Имя" Binding="{Binding firstname}" Width="150" CanUserResize="False"></DataGridTextColumn>
-                <DataGridTextColumn Header="Фамилия" Binding="{Binding lastname}" Width="*" CanUserResize="False"></DataGridTextColumn>
-                <DataGridTextColumn Header="Возраст" Binding="{Binding Age}" Width="95" CanUserResize="False"></DataGridTextColumn>
-                <DataGridTextColumn Header="Должность" Binding="{Binding position}" Width="95" CanUserResize="False"></DataGridTextColumn>
-                <DataGridTextColumn Header="Логин" Binding="{Binding Account.login}" Width="100" CanUserResize="False"></DataGridTextColumn>
-                <DataGridTextColumn Header="Пароль" Binding="{Binding Account.password}" Width="100" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кличка" Binding="{Binding Name}" Width="150" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding birthdayformat}" Width="*" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTextColumn Header="Пол" Binding="{Binding sex}" Width="95" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTextColumn Header="Вид" Binding="{Binding kind}" Width="95" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTextColumn Header="Порода" Binding="{Binding breed}" Width="100" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="фото" Width="*" IsReadOnly="True" CanUserResize="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding image}" Height="100px" Width="100px"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
             </DataGrid.Columns>
         </DataGrid>

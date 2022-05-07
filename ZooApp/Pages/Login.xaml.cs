@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ZooApp
+namespace ZooApp.Pages
 {
     /// <summary>
     /// Interaction logic for Login.xaml
