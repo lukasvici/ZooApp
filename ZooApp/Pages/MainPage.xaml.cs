@@ -28,11 +28,7 @@ namespace ZooApp.Pages
         }
         void GenerateButtons(int permission)
         {
-            if (permission < 1 || permission > 3)
-            {
-                MessageBox.Show("Не правильные права в бд!");
-                Application.Current.Windows[0].Close();
-            }
+            
             for (int i = 0; i < permission; i++)
             {
                 Button btn = new Button();

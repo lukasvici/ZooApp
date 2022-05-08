@@ -35,6 +35,11 @@ namespace ZooApp.Pages
                 var docs = from d in db.Account where d.login == LoginInput.Text select d;
                 if (docs.First().password == Hash(PassInput.Text))
                 {
+                    if (docs.First().permission < 1 || docs.First().permission > 3)
+                    {
+                        MessageBox.Show("Не правильные права в бд!");
+                        return;
+                    }
                     NavigationService.Navigate(new MainPage(docs.First().permission));
                     PassInput.Text = "";
                     LoginInput.Text = "";
