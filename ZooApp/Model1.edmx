@@ -11,7 +11,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="password" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="permission" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Animal">
@@ -35,7 +35,7 @@
           <Property Name="lastname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Age" Type="int" Nullable="false" />
           <Property Name="position" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="idaccount" Type="int" Nullable="false" />
+          <Property Name="idaccount" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -57,7 +57,7 @@
           <Property Name="animalid" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Person_Account">
-          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="Person" Type="Self.Person" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Account">
@@ -124,7 +124,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="permission" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Person" Relationship="Self.FK_Person_Account" FromRole="Account" ToRole="Person" />
         </EntityType>
@@ -150,7 +150,7 @@
           <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Age" Type="Int32" Nullable="false" />
           <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="idaccount" Type="Int32" Nullable="false" />
+          <Property Name="idaccount" Type="Int32" />
           <NavigationProperty Name="Account" Relationship="Self.FK_Person_Account" FromRole="Person" ToRole="Account" />
           <NavigationProperty Name="Worktable" Relationship="Self.FK_Worktable_Person" FromRole="Person" ToRole="Worktable" />
         </EntityType>
@@ -176,7 +176,7 @@
           <NavigationProperty Name="Person" Relationship="Self.FK_Worktable_Person" FromRole="Worktable" ToRole="Person" />
         </EntityType>
         <Association Name="FK_Person_Account">
-          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
           <End Role="Person" Type="Self.Person" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Account">

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -47,15 +48,17 @@ namespace ZooApp.Pages
                 {
                     curPerson.Account = new Account();
                     curPerson.Account.login = LoginInput.Text;
-                    curPerson.Account.password = PasswordInput.Text;
+                    curPerson.Account.password = Hash(PasswordInput.Text);
                     curPerson.Account.permission = Convert.ToInt32(PermissionInput.Text);
                     ZooDBEntities.GetContext().Account.Add(curPerson.Account);
                 }
+                curPerson.Account.password = Hash(PasswordInput.Text);
                 ZooDBEntities.GetContext().SaveChanges();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
+                return;
             }
             NavigationService.GoBack();
         }
@@ -76,6 +79,17 @@ namespace ZooApp.Pages
             if (string.IsNullOrEmpty(PositionInput.Text.Replace(" ", "")))
                 Errors.AppendLine("Укажите должность");
             return Errors;
+        }
+        string Hash(string pass)
+        {
+            var crypt = new SHA256Managed();
+            byte[] Hashpass = crypt.ComputeHash(Encoding.UTF8.GetBytes(pass));
+            string result = String.Empty;
+            foreach (byte theByte in Hashpass)
+            {
+                result += theByte.ToString("x2");
+            }
+            return result;
         }
     }
 }

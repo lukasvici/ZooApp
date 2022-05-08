@@ -16,11 +16,13 @@ namespace ZooApp
     {
         public int id { get; set; }
         public Nullable<System.DateTime> worktime { get; set; }
-        public string worktimeformat { get { return Convert.ToDateTime(worktime).ToString("dd/MM/yyy HH:mm"); } }
+
         public int workerid { get; set; }
         public int animalid { get; set; }
     
         public virtual Animal Animal { get; set; }
         public virtual Person Person { get; set; }
+        public string worktimeformat { get { return Convert.ToDateTime(worktime).ToString("dd/MM/yyy HH:mm"); } }
+
     }
 }
