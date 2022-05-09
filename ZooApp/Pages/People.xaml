@@ -37,7 +37,6 @@
         <Image Grid.Column="3" MouseDown="btnEdit_Click" Height="40" Width="40" Source="/edit.png" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" MinWidth="25" MinHeight="25"/>
         <Image Grid.Column="4" MouseDown="AddBtn_Click" Source="/plus.png" Grid.Row="1" MinWidth="25" MinHeight="25" Height="40" VerticalAlignment="Center" Width="40"/>
         <Image Grid.Column="5" MouseDown="delBtn_Click" Source="/delete.png" Grid.Row="1" RenderTransformOrigin="0.487,0.46" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Image Grid.Column="2" MouseDown="Export_Word" Source="/printer.png" Grid.Row="1" RenderTransformOrigin="0.487,0.46" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Grid Grid.Row="1" Grid.ColumnSpan="6"/>
 
     </Grid>
